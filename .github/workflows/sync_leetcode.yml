@@ -5,16 +5,10 @@ on:
   schedule:
     - cron: "0 8 * * 6"
 
-
-
 jobs:
-
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest    
     
-    permissions:
-      issues: write
-      
     steps:
       - name: Sync
         uses: joshcai/leetcode-sync@v1.5
