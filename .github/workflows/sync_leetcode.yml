@@ -14,6 +14,7 @@ jobs:
     
     permissions:
       issues: write
+      
     steps:
       - name: Sync
         uses: joshcai/leetcode-sync@v1.5
