@@ -1,1 +1,1 @@
-# LeetCode-Sync
+# practice-algorithm for problem solving
