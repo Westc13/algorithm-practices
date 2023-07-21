@@ -7,8 +7,5 @@ class Solution:
             result += nums[0]
             nums[0] += 1
         return result
-
-            
-        return result
         
         
