@@ -5,5 +5,4 @@ class Solution:
             roundedAmount = purchaseAmount - remainder
         else:
             roundedAmount = purchaseAmount + (10 - remainder)
-        remainingBalance = 100 - roundedAmount
-        return remainingBalance
+        return 100 - roundedAmount
