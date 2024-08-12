@@ -13,10 +13,10 @@ class Solution:
 
         if first_digit != '0':
             min_num_str = num_str.replace(first_digit, '0')
-        else:
-            for digit in num_str[1:]:
-                if digit != '1' and digit != '0':
-                    min_num_str = num_str.replace(digit, '0')
+        # else:
+        #     for digit in num_str[1:]:
+        #         if digit != '1' and digit != '0':
+        #             min_num_str = num_str.replace(digit, '0')
         min_num = int(min_num_str)
 
         return max_num - min_num
