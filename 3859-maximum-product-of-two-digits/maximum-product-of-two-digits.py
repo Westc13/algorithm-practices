@@ -1,5 +1,10 @@
 class Solution:
     def maxProduct(self, n: int) -> int:
         digits = [int(digit) for digit in str(n)]
-        digits_sorted = sorted(digits)
-        return digits_sorted[-1] * digits_sorted[-2]
+        first = second = 0
+        for d in digits:
+            if d > first:
+                first, second = d, first
+            elif d > second:
+                second = d
+        return first * second
