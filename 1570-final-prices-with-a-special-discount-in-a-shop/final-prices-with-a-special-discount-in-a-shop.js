@@ -3,7 +3,7 @@
  * @return {number[]}
  */
 var finalPrices = function(prices) {
-    const res = [];
+    /* const res = [];
     for (let i = 0; i < prices.length; i++){
         let found = false;
         for (let j = i + 1; j < prices.length; j++){
@@ -15,5 +15,17 @@ var finalPrices = function(prices) {
         }
         if (!found) res.push(prices[i]);
     }
-    return res
+    return res */
+
+    const res = prices.slice();
+    const stack = [];
+
+    for (let i = 0; i < prices.length; i++){
+        while (stack.length > 0 && prices[i] <= prices[stack[stack.length - 1]]) {
+            const idx = stack.pop();
+            res[idx] = prices[idx] - prices[i]
+        }
+        stack.push(i);
+    }
+    return res;
 };
