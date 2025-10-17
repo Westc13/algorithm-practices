@@ -4,7 +4,7 @@
  * @return {number}
  */
 var countSymmetricIntegers = function(low, high) {
-    let count = 0;
+    /* let count = 0;
     for (let num = low; num <= high; num++){
         const s = num.toString();
         if (s.length % 2 !== 0){ continue};
@@ -14,5 +14,37 @@ var countSymmetricIntegers = function(low, high) {
 
         if (sumFirst === sumSecond){ count++ };
     }
-    return count
+    return count */
+
+    let count = 0;
+    function getDigits(num) {
+        const digits = [];
+        while (num > 0){
+            const lastDigit = num % 10;
+            digits.push(lastDigit);
+            num = Math.floor(num / 10);
+        }
+        return digits
+    };
+
+    function sumHalves(digits) {
+        let sum1 = 0, sum2 = 0;
+
+        for (let i = 0; i < digits.length; i++){
+            if (i < digits.length / 2){
+                sum1 += digits[i];
+            } else {
+                sum2 += digits[i];
+            }
+        }
+        return sum1 === sum2;
+    }
+
+    for (let num = low; num <= high; num++){
+        const digits = getDigits(num);
+        if (digits.length % 2 === 0 && sumHalves(digits)) {
+            count ++;
+        }
+    }
+    return count;
 };
