@@ -12,5 +12,8 @@ var isAcronym = function(words, s) {
         return false;
     } else {return true} */
 
-    return words.map(w => w[0]).join('') === s;
+    /* return words.map(w => w[0]).join('') === s; */
+
+    if (s.length !== words.length) return false;
+    return words.every((w, i) => w[0] === s[i])
 };
