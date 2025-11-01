@@ -3,13 +3,18 @@
  * @return {string}
  */
 var clearDigits = function(s) {
-    const stack = [];
+    /* const stack = [];
     for (let char of s) {
         if (/[a-z]/i.test(char)) {
             stack.push(char);
         } else if (/\d/.test(char)) {
             if (stack.length) stack.pop();
         }
+    }
+    return stack.join(''); */
+    const stack = [];
+    for (let char of s) {
+        (/[a-z]/i.test(char)) ? stack.push(char) : stack.pop();
     }
     return stack.join('');
 };
