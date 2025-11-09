@@ -4,7 +4,7 @@
  * @return {string}
  */
 var mergeAlternately = function(word1, word2) {
-    let answer = '';
+    /* let answer = '';
     let length = Math.min(word1.length, word2.length);
     for (let i = 0; i < length; i++) {
         answer += word1[i];
@@ -14,6 +14,18 @@ var mergeAlternately = function(word1, word2) {
         answer += word1.slice(length, word1.length );
     } else if (word2.length > word1.length) {
         answer += word2.slice(length, word2.length);
+    }
+    return answer; */
+
+    let answer = '';
+    let maxLen = Math.max(word1.length, word2.length);
+    for (let i = 0; i < maxLen; i++) {
+        if (i < word1.length) {
+            answer += word1[i];
+        }
+        if (i < word2.length) {
+            answer += word2[i];
+        }
     }
     return answer;
 };
