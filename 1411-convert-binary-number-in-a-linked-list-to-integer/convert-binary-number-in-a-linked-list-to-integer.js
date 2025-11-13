@@ -10,11 +10,18 @@
  * @return {number}
  */
 var getDecimalValue = function(head){;
-    let current = head;
+    /* let current = head;
     let base2 = '';
     while (current !== null) {
         base2 += current.val;
         current = current.next;
     }
-    return parseInt(base2, 2);
+    return parseInt(base2, 2); */
+    let current = head;
+    let accumulator = 0;
+    while (current !== null) {
+        accumulator = accumulator * 2 + current.val;
+        current = current.next;
+    }
+    return accumulator;
 };
