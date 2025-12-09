@@ -18,11 +18,16 @@ var middleNode = function(head) {
     }
     return slow; */
 
-    let n = 0, current = head;
+    /* let n = 0, current = head;
     while (current) {n++; current = current.next;}
 
     let steps = Math.floor(n / 2);
     current = head;
     while (steps--) current = current.next;
-    return current;
+    return current; */
+
+    const arr = [];
+    let cur = head;
+    while (cur) { arr.push(cur); cur = cur.next;}
+    return arr[Math.floor(arr.length / 2)];
 };
