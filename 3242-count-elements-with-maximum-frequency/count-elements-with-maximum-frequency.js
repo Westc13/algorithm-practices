@@ -16,7 +16,7 @@ var maxFrequencyElements = function(nums) {
     }
     return total; */
 
-    const freq = {};
+    /* const freq = {};
 
     for (let num of nums) {
         freq[num] = (freq[num] || 0) + 1;
@@ -33,6 +33,23 @@ var maxFrequencyElements = function(nums) {
     for (let key in freq) {
         if (freq[key] === maxFreq) {
             total += freq[key];
+        }
+    }
+    return total; */
+
+    const freq = {};
+    let maxFreq = 0;
+    let total = 0;
+
+    for (let num of nums) {
+        freq[num] = (freq[num] || 0) + 1;
+
+        if (freq[num] > maxFreq) {
+            maxFreq = freq[num];
+            total = freq[num];
+        }
+        else if (freq[num] === maxFreq) {
+            total += freq[num];
         }
     }
     return total;
