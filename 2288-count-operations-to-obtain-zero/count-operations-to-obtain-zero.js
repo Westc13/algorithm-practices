@@ -4,7 +4,7 @@
  * @return {number}
  */
 var countOperations = function(num1, num2) {
-    let result = 0;
+    /* let result = 0;
     while (num1 > 0 && num2 > 0) {
         if (num1 >= num2) {
             num1 = num1 - num2;
@@ -13,6 +13,19 @@ var countOperations = function(num1, num2) {
             num2 = num2 - num1;
         }
         result ++;
+    }
+    return result; */
+
+    let result = 0;
+
+    while (num1 > 0 && num2 > 0) {
+        if (num1 >= num2) {
+            result += Math.floor(num1 / num2);
+            num1 %= num2;
+        } else {
+            result += Math.floor(num2 / num1);
+            num2 %= num1;
+        }
     }
     return result;
 };
