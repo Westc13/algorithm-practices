@@ -24,7 +24,7 @@ var calPoints = function(operations) {
     }
     return scores.reduce((accu, curr) => accu + curr, 0) */
 
-    const scores = [];
+    /* const scores = [];
     for (let op of operations) {
         if (!isNaN(op)) {
             scores.push(parseInt(op));
@@ -42,6 +42,34 @@ var calPoints = function(operations) {
             scores.pop();
         }
     }
-    return scores.reduce((accu, curr) => accu + curr, 0);
+    return scores.reduce((accu, curr) => accu + curr, 0); */
 
+    const scores = [];
+
+    for (let op of operations) {
+        switch (op) {
+            default:
+            if (!isNaN(op)) {
+                scores.push(parseInt(op));
+            }
+            break;
+        case '+': {
+            const last = scores[scores.length - 1];
+            const secondLast = scores[scores.length - 2];
+            scores.push(last + secondLast);
+            break;
+        }
+
+        case 'D': {
+            const last = scores[scores.length - 1];
+            scores.push(last * 2);
+            break;
+        }
+
+        case 'C':
+        scores.pop();
+        break;
+        }
+    }
+    return scores.reduce((accu, curr) => accu + curr, 0);
 };
