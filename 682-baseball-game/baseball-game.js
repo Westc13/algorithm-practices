@@ -44,7 +44,7 @@ var calPoints = function(operations) {
     }
     return scores.reduce((accu, curr) => accu + curr, 0); */
 
-    const scores = [];
+    /* const scores = [];
 
     for (let op of operations) {
         switch (op) {
@@ -69,6 +69,34 @@ var calPoints = function(operations) {
         case 'C':
         scores.pop();
         break;
+        }
+    }
+    return scores.reduce((accu, curr) => accu + curr, 0); */
+
+
+    const scores = [];
+
+    const handlers = {
+        '+': () => {
+            const last = scores[scores.length - 1];
+            const secondLast = scores[scores.length - 2];
+            scores.push(last + secondLast);
+        },
+
+        'D': () => {
+            scores.push(scores[scores.length - 1] * 2);
+        },
+
+        'C': () => {
+            scores.pop();
+        }
+    };
+
+    for (let op of operations) {
+        if (handlers[op]) {
+            handlers[op]();
+        } else {
+            scores.push(parseInt(op));
         }
     }
     return scores.reduce((accu, curr) => accu + curr, 0);
