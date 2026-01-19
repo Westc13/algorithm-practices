@@ -22,7 +22,7 @@ var invertTree = function(root) {
 
     return root; */
 
-    if (root === null) return null;
+    /* if (root === null) return null;
     
     const queue = [root];
     while (queue.length > 0) {
@@ -32,6 +32,20 @@ var invertTree = function(root) {
         node.right = temp;
         if (node.left) queue.push(node.left);
         if (node.right) queue.push(node.right);
+    }
+    return root; */
+
+    if (root === null) return null;
+
+    const stack = [root];
+
+    while (stack.length > 0) {
+        const node = stack.pop();
+
+        [node.left, node.right] = [node.right, node.left];
+
+        if (node.left) stack.push(node.left);
+        if (node.right) stack.push(node.right);
     }
     return root;
 };
