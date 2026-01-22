@@ -19,7 +19,7 @@ var deleteGreatestValue = function(grid) {
     }
     return res; */
 
-    let res = 0;
+    /* let res = 0;
 
     while (grid[0].length) {
         let roundMax = 0;
@@ -34,5 +34,31 @@ var deleteGreatestValue = function(grid) {
         }
         res += roundMax;
     }
+    return res; */
+
+    let res = 0;
+
+    while (grid[0].length > 0) {
+        let roundMax = 0;
+
+        for (let i = 0; i < grid.length; i++) {
+            let rowMax = -Infinity;
+            let idx = -1;
+
+            for (let j = 0; j < grid[i].length; j++) {
+                if (grid[i][j] > rowMax) {
+                    rowMax = grid[i][j];
+                    idx = j;
+                }
+            }
+
+            grid[i].splice(idx, 1);
+
+            roundMax = Math.max(roundMax, rowMax);
+        }
+
+        res += roundMax
+    }
+
     return res;
 };
