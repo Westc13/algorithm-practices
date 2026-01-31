@@ -13,7 +13,7 @@ var findGCD = function(nums) {
     }
     return Math.max(...commons); */
 
-    const largest = Math.max(...nums);
+    /* const largest = Math.max(...nums);
     const smallest = Math.min(...nums);
     let greatestCommon = 1;
     for (let i = 1; i <= smallest; i++) {
@@ -21,5 +21,14 @@ var findGCD = function(nums) {
             greatestCommon = i;
         }
     }
-    return greatestCommon;
+    return greatestCommon; */
+
+    const numsArr = nums.sort((a, b) => a - b);
+    let greatest = 1;
+    for (let i = 1; i <= numsArr[0]; i++) {
+        if (numsArr[0] % i === 0 && numsArr[numsArr.length - 1] % i === 0 && i > greatest) {
+            greatest = i;
+        }
+    }
+    return greatest;
 };
