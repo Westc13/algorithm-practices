@@ -3,7 +3,7 @@
  * @return {number}
  */
 var countNegatives = function(grid) {
-    let count = 0;
+    /* let count = 0;
     const m = grid.length;
     const n = grid[0].length;
     for (let i = 0; i < m; i++) {
@@ -11,6 +11,15 @@ var countNegatives = function(grid) {
             if (grid[i][j] < 0) {
                 count ++;
             }
+        }
+    }
+    return count; */
+
+    let count = 0;
+    let flattenArr = grid.flat()
+    for (let i = 0; i < flattenArr.length; i++) {
+        if (flattenArr[i] < 0) {
+            count ++;
         }
     }
     return count;
