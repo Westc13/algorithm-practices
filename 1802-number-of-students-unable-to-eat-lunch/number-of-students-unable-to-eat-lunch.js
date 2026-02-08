@@ -4,7 +4,7 @@
  * @return {number}
  */
 var countStudents = function(students, sandwiches) {
-    let zeros = students.reduce((accu, curr) => {
+    /* let zeros = students.reduce((accu, curr) => {
         if (curr === 0) {
             accu ++;
         }
@@ -27,5 +27,18 @@ var countStudents = function(students, sandwiches) {
             break;
         }
     }
-    return zeros + ones;
+    return zeros + ones; */
+
+    const count = [0, 0];
+    for (let s of students) {
+        count[s]++;
+    }
+
+    for (let sandwich of sandwiches) {
+        if (count[sandwich] === 0) {
+            break;
+        }
+        count[sandwich]--;
+    }
+    return count[0] + count[1];
 };
