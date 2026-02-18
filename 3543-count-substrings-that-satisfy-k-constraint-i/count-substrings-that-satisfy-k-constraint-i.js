@@ -4,7 +4,7 @@
  * @return {number}
  */
 var countKConstraintSubstrings = function(s, k) {
-    const result = [];
+    /* const result = [];
     for (let i = 0; i < s.length; i++) {
         for (let j = i + 1; j < s.length + 1; j++) {
             result.push(s.slice(i, j));
@@ -24,6 +24,26 @@ var countKConstraintSubstrings = function(s, k) {
         }
         if (zeroCount <= k || oneCount <= k) {
             count++
+        }
+    }
+    return count; */
+
+    let count = 0;
+
+    for (let i = 0; i < s.length; i++) {
+        let zeroCount = 0;
+        let oneCount = 0;
+
+        for (let j = i; j < s.length; j++) {
+            if (s[j] === '0') {
+                zeroCount ++;
+            } else {
+                oneCount ++;
+            }
+
+            if (zeroCount <= k || oneCount <= k) {
+                count ++;
+            }
         }
     }
     return count;
