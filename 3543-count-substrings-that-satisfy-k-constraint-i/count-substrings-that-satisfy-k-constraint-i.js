@@ -28,7 +28,7 @@ var countKConstraintSubstrings = function(s, k) {
     }
     return count; */
 
-    let count = 0;
+    /* let count = 0;
 
     for (let i = 0; i < s.length; i++) {
         let zeroCount = 0;
@@ -45,6 +45,30 @@ var countKConstraintSubstrings = function(s, k) {
                 count ++;
             }
         }
+    }
+    return count; */
+
+    let left = 0;
+    let zeroCount = 0;
+    let oneCount = 0;
+    let count = 0;
+
+    for (let right = 0; right < s.length; right ++) {
+        if (s[right] === '0') {
+            zeroCount ++;
+        } else {
+            oneCount ++;
+        }
+
+        while (zeroCount > k && oneCount > k) {
+            if (s[left] === '0') {
+                zeroCount --;
+            } else {
+                oneCount --;
+            }
+            left ++;
+        }
+        count += right - left + 1;
     }
     return count;
 };
