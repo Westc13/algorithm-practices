@@ -39,7 +39,7 @@ var minimizedStringLength = function(s) {
    dfs(s);
    return minLength; */
 
-   const freq = {};
+   /* const freq = {};
 
    for (const c of s) {
         freq[c] = (freq[c] || 0) + 1;
@@ -53,5 +53,16 @@ var minimizedStringLength = function(s) {
         length --;
     }
    }
-   return length;
+   return length; */
+
+   const stack = [];
+   const seen = new Set();
+
+   for (const c of s) {
+    if (!seen.has(c)) {
+        stack.push(c);
+        seen.add(c);
+    } else {}
+   }
+   return stack.length;
 };
