@@ -3,7 +3,7 @@
  * @return {number}
  */
 var duplicateNumbersXOR = function(nums) {
-    const freq = {};
+    /* const freq = {};
     for (const num of nums) {
         freq[num] = (freq[num] || 0) + 1;
     }
@@ -11,6 +11,18 @@ var duplicateNumbersXOR = function(nums) {
     for (const key in freq) {
         if (freq[key] === 2) {
             result ^= Number(key);
+        }
+    }
+    return result; */
+
+    const seen = new Set();
+    let result = 0;
+
+    for (const num of nums) {
+        if (seen.has(num)) {
+            result ^= num;
+        } else {
+            seen.add(num);
         }
     }
     return result;
