@@ -3,7 +3,27 @@
  * @return {number[][]}
  */
 var generate = function(numRows) {
-    const result = [];
+    
+    const triangle = [];
+
+    for (let i = 0; i < numRows; i++) {
+        const row = [];
+        row.push(1);
+
+        for (let j = 1; j < i; j++) {
+            const previousRow = triangle[i - 1];
+            row.push(previousRow[j - 1] + previousRow[j]);
+        }
+
+        if (i > 0) {
+            row.push(1);
+        }
+        triangle.push(row);
+    }
+
+    return triangle;
+    
+    /* const result = [];
 
     for (let i = 0; i < numRows; i++) {
         const row = [];
@@ -18,5 +38,5 @@ var generate = function(numRows) {
         }
         result.push(row);
     }
-    return result;
+    return result; */
 };
