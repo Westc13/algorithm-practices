@@ -44,11 +44,21 @@ var countPrimeSetBits = function(left, right) {
     }
     return result;
 
-    function countBits(num) {
+    /* function countBits(num) {
         let count = 0;
         while (num > 0) {
             count += num & 1;
             num = num >> 1;
+        }
+        return count;
+    } */
+
+    function countBits(num) {
+        let count = 0;
+
+        while (num > 0) {
+            num = num & (num - 1);
+            count++;
         }
         return count;
     }
