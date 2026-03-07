@@ -33,7 +33,7 @@ var countPrimeSetBits = function(left, right) {
         return true;
     } */
 
-    let result = 0;
+    /* let result = 0;
 
     for (let num = left; num <= right; num++) {
         let count = countBits(num);
@@ -42,7 +42,7 @@ var countPrimeSetBits = function(left, right) {
             result++;
         }
     }
-    return result;
+    return result; */
 
     /* function countBits(num) {
         let count = 0;
@@ -53,7 +53,7 @@ var countPrimeSetBits = function(left, right) {
         return count;
     } */
 
-    function countBits(num) {
+    /* function countBits(num) {
         let count = 0;
 
         while (num > 0) {
@@ -70,5 +70,17 @@ var countPrimeSetBits = function(left, right) {
             if (n % i === 0) return false;
         }
         return true;
+    } */
+
+    const primes = new Set([2, 3, 5, 7, 11, 13, 17, 19]);
+    let result = 0;
+
+    for (let num = left; num <= right; num++) {
+        let bits = num.toString(2).split('1').length - 1;
+
+        if (primes.has(bits)) {
+            result++;
+        }
     }
+    return result;
 };
