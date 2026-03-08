@@ -3,7 +3,7 @@
  * @return {boolean}
  */
 var uniqueOccurrences = function(arr) {
-    const freq = {};
+    /* const freq = {};
     for (const num of arr) {
         freq[num] = (freq[num] || 0) + 1;
     }
@@ -15,5 +15,12 @@ var uniqueOccurrences = function(arr) {
             counts.add(value);
         }
     }
-    return true;
+    return true; */
+
+    const freq = {};
+    for (const num of arr) {
+        freq[num] = (freq[num] || 0) + 1;
+    }
+    const values = Object.values(freq);
+    return values.length === new Set(values).size;
 };
