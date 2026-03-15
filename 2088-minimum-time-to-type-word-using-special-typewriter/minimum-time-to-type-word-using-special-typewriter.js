@@ -3,7 +3,7 @@
  * @return {number}
  */
 var minTimeToType = function(word) {
-    let time = 0;
+    /* let time = 0;
     let current = 'a';
 
     for (let char of word) {
@@ -12,6 +12,16 @@ var minTimeToType = function(word) {
 
         time +=  move + 1;
         current = char;
+    }
+    return time; */
+
+    let time = 0, prev = 0;
+
+    for (let c of word) {
+        let curr = c.charCodeAt(0) - 97;
+        let diff = Math.abs(curr - prev);
+        time += Math.min(diff, 26 - diff) + 1;
+        prev = curr;
     }
     return time;
 };
