@@ -11,8 +11,22 @@
  * @return {number[]}
  */
 var postorderTraversal = function(root) {
-    if (!root) return [];
+    /* if (!root) return [];
     const left = postorderTraversal(root.left);
     const right = postorderTraversal(root.right);
-    return [...left, ...right, root.val];
+    return [...left, ...right, root.val]; */
+
+    if (!root) return [];
+
+    const stack = [root];
+    const result = [];
+
+    while (stack.length) {
+        const node = stack.pop();
+        result.push(node.val);
+
+        if (node.left) stack.push(node.left);
+        if (node.right) stack.push(node.right);
+    }
+    return result.reverse();
 };
