@@ -23,7 +23,7 @@ var twoOutOfThree = function(nums1, nums2, nums3) {
     }
     return [...result]; */
 
-    const sets = [new Set(nums1), new Set(nums2), new Set(nums3)];
+    /* const sets = [new Set(nums1), new Set(nums2), new Set(nums3)];
     const countMap = new Map();
 
     for (let s of sets) {
@@ -34,6 +34,24 @@ var twoOutOfThree = function(nums1, nums2, nums3) {
     const result = [];
     for (let [num, count] of countMap) {
         if (count >= 2) {
+            result.push(num);
+        }
+    }
+    return result; */
+
+    const count = new Array(101).fill(0);
+
+    const sets = [new Set(nums1), new Set(nums2), new Set(nums3)];
+
+    for (let i = 0; i < 3; i++) {
+        for (let num of sets[i]) {
+            count[num] ++;
+        }
+    }
+
+    const result = [];
+    for (let num = 1; num <= 100; num++) {
+        if (count[num] >= 2) {
             result.push(num);
         }
     }
