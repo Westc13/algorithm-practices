@@ -3,7 +3,7 @@
  * @return {number}
  */
 var singleNumber = function(nums) {
-    const numsMap = nums.reduce((num, curr) => {
+    /* const numsMap = nums.reduce((num, curr) => {
         num[curr] = (num[curr] || 0) + 1;
         return num;
     }, {});
@@ -11,5 +11,12 @@ var singleNumber = function(nums) {
         if (value === 1) {
             return Number(key);
         }
+    } */
+
+    let result = 0;
+
+    for (let num of nums) {
+        result ^= num;
     }
+    return result;
 };
