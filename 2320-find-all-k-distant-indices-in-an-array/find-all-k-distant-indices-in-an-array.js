@@ -16,7 +16,7 @@ var findKDistantIndices = function(nums, key, k) {
     }
     return result.sort((a,b) => a - b); */
 
-    const result = new Set();
+    /* const result = new Set();
 
     for (let j = 0; j < nums.length; j++) {
         if (nums[j] === key) {
@@ -28,5 +28,17 @@ var findKDistantIndices = function(nums, key, k) {
             }
         }
     }
-    return Array.from(result).sort((a, b) => a - b);
+    return Array.from(result).sort((a, b) => a - b); */
+
+    const result = [];
+
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = Math.max(0, i - k); j <= Math.min(nums.length - 1, i + k); j++) {
+            if (nums[j] === key) {
+                result.push(i);
+                break;
+            }
+        }
+    }
+    return result;
 };
