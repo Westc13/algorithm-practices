@@ -42,7 +42,7 @@ var findKDistantIndices = function(nums, key, k) {
     }
     return result; */
 
-    const intervals = [];
+    /* const intervals = [];
 
     for (let j = 0; j < nums.length; j++) {
         if (nums[j] === key) {
@@ -65,6 +65,23 @@ var findKDistantIndices = function(nums, key, k) {
     for (let [start, end] of merged) {
         for (let i = start; i <= end; i++) {
             result.push(i);
+        }
+    }
+    return result; */
+
+    const result = [];
+    let i = 0;
+
+    for (let j = 0; j < nums.length; j++) {
+        if (nums[j] === key) {
+            let left = Math.max(i, j - k);
+            let right = Math.min(nums.length - 1, j + k);
+
+            while (left <= right) {
+                result.push(left);
+                left++;
+            }
+            i = right + 1;
         }
     }
     return result;
