@@ -3,7 +3,7 @@
  * @return {number}
  */
 var countTriples = function(n) {
-    count = 0
+    /* let count = 0
 
     for (let a = 1; a <= n; a++) {
         for (let b = 1; b <= n; b++) {
@@ -12,6 +12,22 @@ var countTriples = function(n) {
 
             if (c * c === c_sqr && c <= n) {
                 count ++
+            }
+        }
+    }
+    return count; */
+
+    let count = 0;
+    let squares = new Set();
+    for (let i = 1; i <= n; i++) {
+        squares.add(i * i);
+    }
+    for (let a = 1; a <= n; a++) {
+        for (let b = 1; b <= n; b++) {
+            let sum = a * a + b * b;
+
+            if (squares.has(sum)) {
+                count++;
             }
         }
     }
