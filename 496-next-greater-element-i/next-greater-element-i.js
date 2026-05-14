@@ -4,7 +4,7 @@
  * @return {number[]}
  */
 var nextGreaterElement = function(nums1, nums2) {
-    const result = [];
+    /* const result = [];
 
     for (let i = 0; i < nums1.length; i++) {
 
@@ -26,5 +26,25 @@ var nextGreaterElement = function(nums1, nums2) {
         result.push(nextGreater);
     }
 
+    return result; */
+
+    const stack = [];
+    const map = new Map();
+
+    for (let num of nums2) {
+        while (stack.length && num > stack[stack.length - 1]) {
+            let smaller = stack.pop();
+            map.set(smaller, num);
+        }
+        stack.push(num);
+    }
+
+    while (stack.length) {
+        map.set(stack.pop(), -1);
+    }
+    const result = [];
+    for (let num of nums1) {
+        result.push(map.get(num));
+    }
     return result;
 };
