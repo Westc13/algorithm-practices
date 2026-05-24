@@ -4,7 +4,7 @@
  * @return {boolean}
  */
 var canBeEqual = function(target, arr) {
-    const targetFreq = target.reduce((acc, cur) => {
+    /* const targetFreq = target.reduce((acc, cur) => {
         acc[cur] = (acc[cur] || 0) + 1;
         return acc;
     }, {})
@@ -17,6 +17,21 @@ var canBeEqual = function(target, arr) {
         if (targetFreq[key] !== arrFreq[key]) {
             return false;
         }
+    }
+    return true; */
+
+    const freq = {};
+
+    for (let num of target) {
+        freq[num] = (freq[num] || 0) + 1;
+    }
+
+    for (let num of arr) {
+        if (!freq[num]) {
+            return false;
+        }
+
+        freq[num]--;
     }
     return true;
 };
