@@ -4,7 +4,7 @@
  * @return {number[]}
  */
 var relativeSortArray = function(arr1, arr2) {
-    const freq = {};
+    /* const freq = {};
 
     for (const num of arr1) {
         freq[num] = (freq[num] || 0) + 1;
@@ -27,5 +27,24 @@ var relativeSortArray = function(arr1, arr2) {
         }
     }
     remaining.sort((a, b) => a - b);
-    return result.concat(remaining);
+    return result.concat(remaining); */
+
+    const order = new Map();
+
+    for (let i = 0; i < arr2.length; i++) {
+        order.set(arr2[i], i);
+    }
+
+    return arr1.sort((a, b) => {
+        const aIn = order.has(a);
+        const bIn = order.has(b);
+
+        if (aIn && bIn) {
+            return order.get(a) - order.get(b);
+        }
+        if (aIn) return -1;
+        if (bIn) return 1;
+
+        return a - b;
+    })
 };
