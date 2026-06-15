@@ -3,7 +3,7 @@
  * @return {character}
  */
 var repeatedCharacter = function(s) {
-    let earliestIndex = s.length;
+    /* let earliestIndex = s.length;
     let answer = '';
 
     for (let i = 0; i < s.length; i++) {
@@ -17,5 +17,14 @@ var repeatedCharacter = function(s) {
             }
         }
     }
-    return answer;
+    return answer; */
+
+    const seen = new Set();
+
+    for (const char of s) {
+        if (seen.has(char)) {
+            return char;
+        }
+        seen.add(char)
+    }
 };
