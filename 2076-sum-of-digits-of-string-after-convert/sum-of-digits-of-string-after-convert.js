@@ -4,7 +4,7 @@
  * @return {number}
  */
 var getLucky = function(s, k) {
-    let digitS = '';
+    /* let digitS = '';
 
     for (const char of s) {
         digitS += char.charCodeAt(0) - 96;
@@ -19,5 +19,32 @@ var getLucky = function(s, k) {
         k--;
     }
 
-    return digitS;
+    return digitS; */
+
+   let num = 0;
+
+    for (const char of s) {
+        let value = char.charCodeAt(0) - 96;
+
+        while (value > 0) {
+            num += value % 10;
+            value = Math.floor(value / 10);
+        }
+    }
+
+    k--;
+
+    while (k > 0) {
+        let sum = 0;
+
+        while (num > 0) {
+            sum += num % 10;
+            num = Math.floor(num / 10);
+        }
+
+        num = sum;
+        k--;
+    }
+
+    return num;
 };
