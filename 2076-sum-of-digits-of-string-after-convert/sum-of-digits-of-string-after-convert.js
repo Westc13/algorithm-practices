@@ -21,7 +21,7 @@ var getLucky = function(s, k) {
 
     return digitS; */
 
-   let num = 0;
+   /* let num = 0;
 
     for (const char of s) {
         let value = char.charCodeAt(0) - 96;
@@ -46,5 +46,17 @@ var getLucky = function(s, k) {
         k--;
     }
 
+    return num; */
+
+    let num = 0;
+
+    for (const char of s) {
+        const value = char.charCodeAt(0) - 96;
+        num += Math.floor(value / 10) + (value % 10);
+    }
+
+    while (--k > 0) {
+        num = String(num).split('').reduce((sum, d) => sum + Number(d), 0);
+    }
     return num;
 };
