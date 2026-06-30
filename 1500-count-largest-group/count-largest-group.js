@@ -3,7 +3,7 @@
  * @return {number}
  */
 var countLargestGroup = function(n) {
-    const freq = {}
+    /* const freq = {}
     function digitSum(num) {
         let sum = 0;
         while (num > 0) {
@@ -30,6 +30,32 @@ var countLargestGroup = function(n) {
             count++;
         }
     }
-    return count;
+    return count; */
 
+    let maxSize = 0;
+    let count = 0;
+    const freq = {};
+
+    function digitSum(num) {
+        let sum = 0;
+        while (num > 0) {
+            sum += num % 10;
+            num = Math.floor(num / 10);
+        }
+        return sum;
+    }
+
+    for (let i = 1; i <= n; i++) {
+        const sum = digitSum(i);
+
+        freq[sum] = (freq[sum] || 0) + 1;
+
+        if (freq[sum] > maxSize) {
+            maxSize = freq[sum];
+            count = 1;
+        } else if (freq[sum] === maxSize) {
+            count++;
+        }
+    }
+    return count;
 };
