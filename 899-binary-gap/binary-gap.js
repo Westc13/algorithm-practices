@@ -3,7 +3,7 @@
  * @return {number}
  */
 var binaryGap = function(n) {
-    const nBin = n.toString(2);
+    /* const nBin = n.toString(2);
 
     let lastOne = -1;
     let maxGap = 0;
@@ -15,6 +15,22 @@ var binaryGap = function(n) {
             }
             lastOne = i;
         }
+    }
+    return maxGap; */
+
+    let position = 0;
+    let lastOne = -1;
+    let maxGap = 0;
+
+    while (n > 0) {
+        if (n & 1) {
+            if (lastOne !== -1) {
+                maxGap = Math.max(maxGap, position - lastOne);
+            }
+            lastOne = position;
+        }
+        n >>= 1;
+        position++;
     }
     return maxGap;
 };
