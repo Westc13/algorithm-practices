@@ -3,7 +3,7 @@
  * @return {number[]}
  */
 var replaceElements = function(arr) {
-    const result = [];
+    /* const result = [];
     for (let i = 0; i < arr.length; i++) {
         let max = -1;
 
@@ -12,5 +12,14 @@ var replaceElements = function(arr) {
         }
         result.push(max);
     }
-    return result;
+    return result; */
+
+    let maxSoFar = -1;
+
+    for (let i = arr.length - 1; i >= 0; i--) {
+        let current = arr[i];
+        arr[i] = maxSoFar;
+        maxSoFar = Math.max(maxSoFar, current);
+    }
+    return arr;
 };
