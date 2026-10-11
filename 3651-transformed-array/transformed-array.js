@@ -17,11 +17,14 @@ var constructTransformedArray = function(nums) {
             result.push(nums[i])
         } */
 
-        if (nums[i] === 0) {
+
+        /* if (nums[i] === 0) {
             result.push(nums[i])
         } else {
             result.push(nums[getCircularIndex(i, nums[i], length)]);
-        }
+        } */
+
+        result.push(nums[getCircularIndex(i, nums[i], length)]);
     }
     return result;
 };
