@@ -9,12 +9,18 @@ var constructTransformedArray = function(nums) {
     };
     const result = [];
     for (let i = 0; i < length; i++) {
-        if (nums[i] > 0) {
+        /* if (nums[i] > 0) {
             result.push(nums[getCircularIndex(i, nums[i], length)]);
         } else if (nums[i] < 0) {
             result.push(nums[getCircularIndex(i, -Math.abs(nums[i]), length)]);
         } else {
             result.push(nums[i])
+        } */
+
+        if (nums[i] === 0) {
+            result.push(nums[i])
+        } else {
+            result.push(nums[getCircularIndex(i, nums[i], length)]);
         }
     }
     return result;
