@@ -4,9 +4,9 @@
  * @return {string}
  */
 var getEncryptedString = function(s, k) {
-    let result = [];
+    let result = '';
     for (let i = 0; i < s.length; i++) {
-        result.push(s[(i + k) % s.length])
+        result += s[(i + k) % s.length]
     }
-    return result.join('');
+    return result;
 };
