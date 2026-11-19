@@ -8,13 +8,13 @@ var distributeCandies = function(candies, num_people) {
     let gift = 1;
     while (candies > 0) {
         for (let i = 0; i < num_people; i++) {
+            if (candies === 0) {
+                break;
+            }
             gift = Math.min(gift, candies);
             result[i] += gift;
             candies -= gift;
             gift++;
-        }
-        if (candies === 0) {
-            break;
         }
     }
     return result;
